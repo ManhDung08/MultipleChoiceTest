@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.ShowQuestionController">
+   <children>
+      <AnchorPane prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutY="38.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="24.0" layoutY="14.0" text="IT" textFill="#f20000">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <HBox layoutX="14.0" layoutY="61.0" prefHeight="30.0" prefWidth="274.0">
+               <children>
+                  <JFXButton prefHeight="46.0" prefWidth="52.0" text="Home" textFill="#f70000" />
+                  <Label prefHeight="30.0" prefWidth="13.0" text="\\" />
+                  <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="My courses" />
+                  <Label layoutX="62.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                  <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="THI CUỐI KỲ" textFill="#ff0707" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="142.0" prefHeight="566.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="138.0">
+         <children>
+            <TabPane prefHeight="200.0" prefWidth="514.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab>
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="228.0">
+                           <children>
+                              <AnchorPane fx:id="popupShowQuestionPane" layoutY="235.0" prefHeight="310.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="223.20000000000005">
+                                 <children>
+                                    <Label layoutX="66.0" layoutY="5.0" text="Question" />
+                                    <HBox layoutX="66.0" layoutY="22.0" prefHeight="19.0" prefWidth="165.0">
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="82.0" text="Question Name" textFill="#0037ff">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="14.0" text="/" />
+                                          <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="72.0" text="ID Number" textFill="#007bff">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <CheckBox layoutX="14.0" layoutY="13.0" mnemonicParsing="false" />
+                                    <ListView fx:id="listView" prefHeight="266.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
+                                    <Label layoutX="533.0" layoutY="23.0" text="Actions">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIconView fill="#0090ff" glyphName="SORT_UP" layoutX="51.0" layoutY="18.0" />
+                                    <Label layoutX="38.0" layoutY="5.0" text="T" textFill="#0077ff" />
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="14.0" layoutY="14.0" text="Question bank" textFill="#ff2c07">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="27.0" layoutY="58.0" text="Select a category">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="showQuestionCheckBox" layoutX="27.0" layoutY="100.0" mnemonicParsing="false" onAction="#showQuestion" text="Also show questions form subcategories" />
+                              <CheckBox layoutX="27.0" layoutY="147.0" mnemonicParsing="false" text="Also show old questions " />
+                              <JFXButton fx:id="goAddQuestionBtn" layoutX="27.0" layoutY="191.0" onAction="#goAddQuestion" prefHeight="34.0" prefWidth="166.0" style="-fx-background-color: blue;" text="CREATE A NEW QUESTION" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                              <VBox layoutX="414.0" layoutY="65.0" prefHeight="26.0" prefWidth="0.0" />
+                              <AnchorPane layoutX="169.0" layoutY="50.0" prefHeight="23.0" prefWidth="226.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;">
+                                 <children>
+                                    <FontAwesomeIconView glyphName="SORT_DOWN" layoutX="209.0" layoutY="23.0" />
+                                    <FontAwesomeIconView glyphName="SORT_UP" layoutX="209.0" layoutY="22.0" />
+                                    <JFXButton fx:id="popupTreeViewBtn" alignment="BASELINE_LEFT" layoutX="-1.0" layoutY="1.0" onAction="#popupTreeView" prefHeight="34.0" prefWidth="226.0" text="    Default" />
+                                 </children>
+                              </AnchorPane>
+                              <TreeView fx:id="treeView" layoutX="169.0" layoutY="91.0" onMouseClicked="#selectItem" prefHeight="422.0" prefWidth="314.0" visible="false" />
+                           </children></AnchorPane>
+                  </content>
+                     <graphic>
+                        <JFXButton text="Questions" />
+                     </graphic>
+                </Tab>
+                <Tab>
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                     <graphic>
+                        <JFXButton fx:id="goAddCategoryButton" onAction="#goAddCategory" onMouseClicked="#goAddCategory" text="Categories" />
+                     </graphic>
+                </Tab>
+                  <Tab>
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                     <graphic>
+                        <JFXButton text="Import" />
+                     </graphic>
+                  </Tab>
+                  <Tab>
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="228.0" />
+                     </content>
+                     <graphic>
+                        <JFXButton text="Export" />
+                     </graphic>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

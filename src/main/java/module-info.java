@@ -7,7 +7,12 @@ module mct.multiplechoicetest {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires com.jfoenix;
+    requires java.sql;
+    requires de.jensd.fx.glyphs.fontawesome;
 
     opens mct.multiplechoicetest to javafx.fxml;
     exports mct.multiplechoicetest;
+    opens mct.multiplechoicetest.Controller to javafx.fxml;
+
 }
