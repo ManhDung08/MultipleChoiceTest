@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.AddNewQuizController">
+   <children>
+      <ImageView fitHeight="14.0" fitWidth="10.0" layoutX="14.0" layoutY="19.0">
+         <image>
+            <Image url="@../../image/success.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="33.0" layoutY="12.0" text="Adding a new Quiz" textFill="#e11a00">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fill="#00bbff" glyphName="SORT_DOWN" layoutX="45.0" layoutY="70.0" size="13" text="" />
+      <Label layoutX="58.0" layoutY="56.0" text="General" textFill="#ff1e00">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="94.0" text="Name" />
+      <Label layoutX="41.0" layoutY="142.0" text="Description" />
+      <Label layoutX="33.0" layoutY="307.0" text="Open the quiz" />
+      <Label layoutX="33.0" layoutY="353.0" text="Close the quiz" />
+      <Label layoutX="45.0" layoutY="402.0" text="Time limit" />
+      <Label layoutX="34.0" layoutY="456.0" text="When time expires" />
+      <JFXButton layoutX="278.0" layoutY="496.0" style="-fx-background-color: blue;" text="Create" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="401.0" layoutY="496.0" style="-fx-background-color: red;" text="Cancel" textFill="#fafafa">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <FontAwesomeIconView fill="#00bbff" glyphName="SORT_DOWN" layoutX="45.0" layoutY="275.0" size="13" text="" />
+      <Label layoutX="60.0" layoutY="260.0" text="Timing" textFill="#ff1e00">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="249.0" layoutY="89.0" prefHeight="26.0" prefWidth="346.0" />
+      <TextArea layoutX="249.0" layoutY="127.0" prefHeight="112.0" prefWidth="426.0" />
+      <CheckBox layoutX="249.0" layoutY="252.0" mnemonicParsing="false" text="Display description course on page">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </CheckBox>
+      <ChoiceBox layoutX="252.0" layoutY="303.0" prefHeight="26.0" prefWidth="54.0" />
+      <ChoiceBox layoutX="317.0" layoutY="302.0" prefHeight="26.0" prefWidth="87.0" />
+      <ChoiceBox layoutX="413.0" layoutY="303.0" prefHeight="26.0" prefWidth="75.0" />
+      <ChoiceBox layoutX="495.0" layoutY="303.0" prefHeight="26.0" prefWidth="53.0" />
+      <ChoiceBox layoutX="561.0" layoutY="303.0" prefHeight="26.0" prefWidth="53.0" />
+      <ChoiceBox layoutX="252.0" layoutY="348.0" prefHeight="26.0" prefWidth="54.0" />
+      <ChoiceBox layoutX="317.0" layoutY="348.0" prefHeight="26.0" prefWidth="87.0" />
+      <ChoiceBox layoutX="413.0" layoutY="348.0" prefHeight="26.0" prefWidth="75.0" />
+      <ChoiceBox layoutX="495.0" layoutY="348.0" prefHeight="26.0" prefWidth="53.0" />
+      <ChoiceBox layoutX="561.0" layoutY="348.0" prefHeight="26.0" prefWidth="53.0" />
+      <TextField layoutX="253.0" layoutY="398.0" prefHeight="26.0" prefWidth="61.0" />
+      <ChoiceBox layoutX="323.0" layoutY="397.0" prefHeight="26.0" prefWidth="75.0" />
+      <ChoiceBox layoutX="252.0" layoutY="451.0" prefHeight="26.0" prefWidth="199.0" />
+      <CheckBox layoutX="637.0" layoutY="308.0" mnemonicParsing="false" text="Enable">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="637.0" layoutY="353.0" mnemonicParsing="false" text="Enable">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="410.0" layoutY="402.0" mnemonicParsing="false" text="Enable">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <ImageView fitHeight="13.0" fitWidth="17.0" layoutX="615.0" layoutY="317.0">
+         <image>
+            <Image url="@../../image/book.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="13.0" fitWidth="17.0" layoutX="615.0" layoutY="355.0">
+         <image>
+            <Image url="@../../image/book.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="13.0" fitWidth="10.0" layoutX="227.0" layoutY="311.0">
+         <image>
+            <Image url="@../../image/material.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="15.0" fitWidth="10.0" layoutX="227.0" layoutY="95.0">
+         <image>
+            <Image url="@../../image/material1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="13.0" fitWidth="10.0" layoutX="227.0" layoutY="404.0">
+         <image>
+            <Image url="@../../image/material.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="13.0" fitWidth="10.0" layoutX="227.0" layoutY="458.0">
+         <image>
+            <Image url="@../../image/material.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

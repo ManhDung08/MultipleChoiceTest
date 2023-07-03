@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import mct.multiplechoicetest.Model.Question;
 import mct.multiplechoicetest.Model.Quiz;
+import mct.multiplechoicetest.Model.QuizResults;
 
 public class StartApp extends Application {
     @Override
@@ -15,6 +16,7 @@ public class StartApp extends Application {
         stage.setTitle("BTL lập trình HDT");
         stage.setScene(scene);
         stage.show();
+        QuizResults.createTable();
 
     }
     public static void main(String[] args) {
