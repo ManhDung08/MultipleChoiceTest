@@ -2,17 +2,27 @@ package mct.multiplechoicetest.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import mct.multiplechoicetest.Model.Quiz;
+import mct.multiplechoicetest.Model.QuizMap;
 import mct.multiplechoicetest.StartApp;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.*;
 
 
-public class HomeController {
+public class HomeController extends AddNewQuizController implements Initializable{
 
     @FXML
     private JFXButton popupButton;
@@ -44,6 +54,50 @@ public class HomeController {
         stage.setTitle("app");
         stage.setScene(scene);
     }
+    @FXML
+    private JFXButton goAddNewQuizBtn;
+    @FXML
+    void goAddNewQuiz(ActionEvent event) throws IOException {
+        Stage stage = (Stage) goShowQuestionButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("AddNewQuiz.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("app");
+        stage.setScene(scene);
+    }
+
+
+    @FXML
+    private FlowPane quizLisstContainer;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        addShowQuizList();
+    }
+
+
+
+    private void addShowQuizList() {
+        List<QuizMap> quizMapList = QuizMap.getAllQuizMapFromDatabase();
+
+        for(QuizMap quizMap : quizMapList){
+            FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("QuizCard.fxml"));
+            try {
+                Node node = fxmlLoader.load();
+                quizLisstContainer.getChildren().add(node);
+                QuizCardController quizCardController = fxmlLoader.getController();
+                quizCardController.setStartQuizBtn(quizMap.getQuiz().getName());
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+    }
+
+
 
 }
 

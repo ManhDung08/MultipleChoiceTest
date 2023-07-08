@@ -1,21 +1,27 @@
 package mct.multiplechoicetest;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import mct.multiplechoicetest.Dao.QuestionDAO;
-import mct.multiplechoicetest.Model.Question;
 import mct.multiplechoicetest.Model.Quiz;
-import mct.multiplechoicetest.Model.QuizResults;
+import mct.multiplechoicetest.Model.QuizMap;
 
-import java.io.File;
+import java.util.List;
 
 public class Test extends Application {
-    public static void main(String[] args) {
-        QuizResults.createTable();
+    @Override
+    public void start(Stage primaryStage) {
+        List<QuizMap> quizMapList = QuizMap.getAllQuizMapFromDatabase();
+        for(QuizMap quizMap : quizMapList){
+            System.out.println(quizMap.getTimeLimit());
+        }
+
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
+    public static void main(String[] args) {
+        launch(args);
     }
 }

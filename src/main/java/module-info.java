@@ -10,6 +10,7 @@ module mct.multiplechoicetest {
     requires com.jfoenix;
     requires java.sql;
     requires de.jensd.fx.glyphs.fontawesome;
+    requires org.xerial.sqlitejdbc;
 
     opens mct.multiplechoicetest to javafx.fxml;
     exports mct.multiplechoicetest;

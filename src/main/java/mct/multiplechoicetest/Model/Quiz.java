@@ -2,7 +2,9 @@ package mct.multiplechoicetest.Model;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Quiz {
     private int quiz_id;
@@ -16,6 +18,9 @@ public class Quiz {
         parent_id = parentId;
 
     }
+
+
+
 
 
     public int getQuiz_id() {
@@ -263,6 +268,47 @@ public class Quiz {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+    public static Quiz getQuizFromDatabase(int quizId) {
+        Quiz quiz = null;
+
+        try {
+            // Register the JDBC driver
+            Class.forName("org.sqlite.JDBC");
+
+            // Define the connection URL for the SQLite database
+            String url = "jdbc:sqlite:D:\\hoclaptrinhjava\\MultipleChoiceTest\\csdl.db";
+
+            // Open a connection to the database
+            Connection connection = DriverManager.getConnection(url);
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM quizzes WHERE Quizid = ?");
+
+            // Set the quiz ID parameter in the SQL statement
+            statement.setInt(1, quizId);
+
+            // Execute the query and retrieve the result set
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if the result set has a row
+            if (resultSet.next()) {
+                // Retrieve the quiz name and parent ID from the result set
+                String name = resultSet.getString("name");
+                int parentId = resultSet.getInt("Parentid");
+
+                // Create a Quiz object with the retrieved values
+                quiz = new Quiz(quizId, name, parentId);
+            }
+
+            // Close the result set, statement, and connection
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quiz;
     }
 
 

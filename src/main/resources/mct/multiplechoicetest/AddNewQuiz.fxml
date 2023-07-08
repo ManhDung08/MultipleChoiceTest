@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.AddNewQuizController">
    <children>
       <ImageView fitHeight="14.0" fitWidth="10.0" layoutX="14.0" layoutY="19.0">
@@ -37,7 +36,7 @@
       <Label layoutX="33.0" layoutY="353.0" text="Close the quiz" />
       <Label layoutX="45.0" layoutY="402.0" text="Time limit" />
       <Label layoutX="34.0" layoutY="456.0" text="When time expires" />
-      <JFXButton layoutX="278.0" layoutY="496.0" style="-fx-background-color: blue;" text="Create" textFill="WHITE">
+      <JFXButton fx:id="addQuizForExamBtn" layoutX="278.0" layoutY="496.0" onAction="#addQuizForExam" style="-fx-background-color: blue;" text="Create" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -53,7 +52,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="249.0" layoutY="89.0" prefHeight="26.0" prefWidth="346.0" />
+      <TextField fx:id="newQuizForExam" layoutX="249.0" layoutY="89.0" prefHeight="26.0" prefWidth="346.0" />
       <TextArea layoutX="249.0" layoutY="127.0" prefHeight="112.0" prefWidth="426.0" />
       <CheckBox layoutX="249.0" layoutY="252.0" mnemonicParsing="false" text="Display description course on page">
          <font>
@@ -70,7 +69,7 @@
       <ChoiceBox layoutX="413.0" layoutY="348.0" prefHeight="26.0" prefWidth="75.0" />
       <ChoiceBox layoutX="495.0" layoutY="348.0" prefHeight="26.0" prefWidth="53.0" />
       <ChoiceBox layoutX="561.0" layoutY="348.0" prefHeight="26.0" prefWidth="53.0" />
-      <TextField layoutX="253.0" layoutY="398.0" prefHeight="26.0" prefWidth="61.0" />
+      <TextField fx:id="quizTime" layoutX="253.0" layoutY="398.0" prefHeight="26.0" prefWidth="61.0" />
       <ChoiceBox layoutX="323.0" layoutY="397.0" prefHeight="26.0" prefWidth="75.0" />
       <ChoiceBox layoutX="252.0" layoutY="451.0" prefHeight="26.0" prefWidth="199.0" />
       <CheckBox layoutX="637.0" layoutY="308.0" mnemonicParsing="false" text="Enable">
