@@ -138,8 +138,46 @@ public class QuizMap {
 
         return quizMaps;
     }
+    public static QuizMap getQuizMapByQuizId(int quizId) {
+        QuizMap quizMap = null;
 
+        try {
+            // Register the JDBC driver
+            Class.forName("org.sqlite.JDBC");
 
+            // Define the connection URL for the SQLite database
+            String url = "jdbc:sqlite:D:\\hoclaptrinhjava\\MultipleChoiceTest\\csdl.db";
+
+            // Open a connection to the database
+            Connection connection = DriverManager.getConnection(url);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM QuizMap WHERE QuizID = ?");
+            statement.setInt(1, quizId);
+
+            // Execute the query and retrieve the result set
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if a record was found
+            if (resultSet.next()) {
+                int quizMapId = resultSet.getInt("ID");
+                int timeLimit = resultSet.getInt("TimeLimit");
+
+                // Retrieve the associated quiz from the database
+                Quiz quiz = Quiz.getQuizFromDatabase(quizId); // Implement this method to retrieve the Quiz object
+
+                // Create a QuizMap object with the retrieved values
+                quizMap = new QuizMap(quizMapId, quiz, timeLimit);
+            }
+
+            // Close the result set, statement, and connection
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quizMap;
+    }
 
 }
 

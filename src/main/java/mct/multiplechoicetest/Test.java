@@ -14,10 +14,7 @@ import java.util.List;
 public class Test extends Application {
     @Override
     public void start(Stage primaryStage) {
-        List<QuizMap> quizMapList = QuizMap.getAllQuizMapFromDatabase();
-        for(QuizMap quizMap : quizMapList){
-            System.out.println(quizMap.getTimeLimit());
-        }
+
 
     }
 

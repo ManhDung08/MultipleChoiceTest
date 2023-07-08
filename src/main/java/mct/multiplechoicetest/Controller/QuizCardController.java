@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import mct.multiplechoicetest.Model.Quiz;
+import mct.multiplechoicetest.Model.QuizMap;
 import mct.multiplechoicetest.StartApp;
 
 import java.io.IOException;
@@ -25,10 +26,15 @@ public class QuizCardController implements Initializable {
     @FXML
     void startQuiz(ActionEvent event) throws IOException {
         Stage stage = (Stage) startQuizBtn.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("AddNewQuiz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("PreviewQuiz.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("app");
         stage.setScene(scene);
+
+        PreviewQuizController previewQuizController = fxmlLoader.getController();
+        previewQuizController.setButtonQuizName(startQuizBtn.getText());
+        previewQuizController.setLabelQuizName(startQuizBtn.getText());
+        previewQuizController.setGetTimeLimit(String.valueOf(QuizMap.getQuizMapByQuizId(Quiz.getQuizIdFromName(startQuizBtn.getText())).getTimeLimit())+" minute");
     }
 
     public void setStartQuizBtn(String value) {
