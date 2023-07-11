@@ -2,37 +2,20 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.PreviewQuizController">
    <children>
-      <AnchorPane prefHeight="56.0" prefWidth="743.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutY="46.0" prefHeight="109.0" prefWidth="743.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="IT" textFill="RED">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <HBox layoutX="14.0" layoutY="62.0" prefHeight="30.0" prefWidth="494.0">
-               <children>
-                  <JFXButton prefHeight="46.0" prefWidth="52.0" text="Home" textFill="#f70000" />
-                  <Label prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="My courses" />
-                  <Label layoutX="62.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="THI CUỐI KỲ" textFill="#ff0707" />
-                  <Label layoutX="173.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="187.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="General" textFill="#ff0707" />
-                  <Label layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton fx:id="buttonQuizName" layoutX="298.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="QuizName" textFill="#ff0707" />
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="153.0" prefHeight="364.0" prefWidth="743.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="paneTruoc" layoutY="153.0" prefHeight="364.0" prefWidth="743.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="labelQuizName" layoutX="14.0" layoutY="14.0" text="QuizName" textFill="#e40000">
                <font>
@@ -78,11 +61,122 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <JFXButton layoutX="677.0" layoutY="9.0" text=" ">
+            <JFXButton fx:id="changPaneBtn" layoutX="677.0" layoutY="9.0" onAction="#changPane" text=" ">
                <graphic>
                   <FontAwesomeIconView fill="#003edc" glyphName="GEAR" text="" />
                </graphic>
             </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneSau" layoutY="150.0" prefHeight="370.0" prefWidth="743.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="editQuizL" layoutX="130.0" layoutY="23.0" text="Editing Quiz" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox layoutX="23.0" layoutY="57.0" prefHeight="18.0" prefWidth="187.0">
+               <children>
+                  <Label text=" Questions:    " />
+                  <Label layoutX="10.0" layoutY="10.0" text="0  " />
+                  <Label layoutX="10.0" layoutY="10.0" text="| This quiz is open" />
+               </children>
+            </HBox>
+            <JFXButton layoutX="14.0" layoutY="91.0" style="-fx-background-color: BLUE;" text="REPAGINATE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="130.0" layoutY="91.0" style="-fx-background-color: BLUE;" text="SELECT MULTIPLEITEMS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="500.0" layoutY="57.0" text="Maximum Grade" />
+            <TextField fx:id="labelGrade" layoutX="598.0" layoutY="53.0" prefHeight="26.0" prefWidth="66.0" />
+            <JFXButton layoutX="672.0" layoutY="51.0" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: BLUE;" text="SAVE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="580.0" layoutY="96.0" prefHeight="18.0" prefWidth="84.0" text="Total of  marks" />
+            <Label layoutX="672.0" layoutY="96.0" prefHeight="18.0" prefWidth="34.0" text="00.00" />
+            <CheckBox layoutX="580.0" layoutY="135.0" mnemonicParsing="false" text="Shuffle" />
+            <ImageView fitHeight="12.0" fitWidth="13.0" layoutX="651.0" layoutY="138.0">
+               <image>
+                  <Image url="@../../image/material.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="250.0" layoutY="306.0" prefHeight="30.0" prefWidth="132.0">
+               <children>
+                  <FontAwesomeIconView glyphName="SORT_UP" layoutX="112.0" layoutY="18.0" />
+                  <FontAwesomeIconView glyphName="SORT_DOWN" layoutX="112.0" layoutY="18.0" />
+                  <JFXButton alignment="BASELINE_LEFT" prefHeight="30.0" prefWidth="134.0" text="Jump to ......." />
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="goAddQuestionBtn" contentDisplay="RIGHT" layoutX="645.0" layoutY="163.0" onAction="#goAddQuestion" prefHeight="30.0" prefWidth="53.0" text="Add" textFill="#0080ff">
+               <graphic>
+                  <FontAwesomeIconView fill="#00a1ff" glyphName="SORT_DOWN" wrappingWidth="1.0" />
+               </graphic>
+            </JFXButton>
+            <VBox fx:id="vBoxD" layoutX="516.0" layoutY="193.0" prefHeight="50.0" prefWidth="166.0" visible="false">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" prefHeight="26.0" prefWidth="157.0" text="a new question">
+                     <graphic>
+                        <FontAwesomeIconView fill="#006fff" glyphName="PLUS" selectionFill="#009dff" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="goBankQuestionBtn" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" onAction="#goBankQuestion" prefHeight="26.0" prefWidth="157.0" text="form question bank">
+                     <graphic>
+                        <FontAwesomeIconView fill="#006fff" glyphName="PLUS" selectionFill="#009dff" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="goRandomQuestionBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#goRandomQuestion" prefHeight="26.0" prefWidth="157.0" text="a random question">
+                     <graphic>
+                        <FontAwesomeIconView fill="#006fff" glyphName="PLUS" selectionFill="#009dff" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Label layoutX="18.0" layoutY="23.0" text="Editing Quiz: " textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="56.0" prefWidth="743.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutY="46.0" prefHeight="109.0" prefWidth="743.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="IT" textFill="RED">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <HBox layoutX="14.0" layoutY="62.0" prefHeight="30.0" prefWidth="588.0">
+               <children>
+                  <JFXButton prefHeight="46.0" prefWidth="52.0" text="Home" textFill="#f70000" />
+                  <Label prefHeight="30.0" prefWidth="13.0" text="\\" />
+                  <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="My courses" />
+                  <Label layoutX="62.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                  <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="THI CUỐI KỲ" textFill="#ff0707" />
+                  <Label layoutX="173.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                  <JFXButton layoutX="187.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="General" textFill="#ff0707" />
+                  <Label layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                  <JFXButton fx:id="buttonQuizName" layoutX="298.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="QuizName" textFill="#ff0707" />
+                  <Label fx:id="gachcheo1" layoutX="394.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" visible="false" />
+                  <JFXButton fx:id="buttonQuizName1" layoutX="396.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="Edit quiz" textFill="#ff0707" visible="false" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

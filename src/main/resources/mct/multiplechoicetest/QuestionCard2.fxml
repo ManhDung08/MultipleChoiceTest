@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.QuestionCard2Controller">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontAwesomeIconView fill="#009dff" glyphName="PLUS" size="17">
+               <HBox.margin>
+                  <Insets left="5.0" right="8.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <CheckBox fx:id="checkBox" mnemonicParsing="false" prefHeight="18.0" prefWidth="19.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </CheckBox>
+            <FontAwesomeIconView glyphName="LIST" size="15">
+               <HBox.margin>
+                  <Insets right="10.0" top="6.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <Label fx:id="questionInfor" prefHeight="18.0" prefWidth="472.0" text="Label" />
+            <FontAwesomeIconView fill="#0061f2" glyphName="SEARCH_PLUS" size="15" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.BankQuizController">
+   <children>
+      <AnchorPane layoutX="155.0" layoutY="63.0" prefHeight="35.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 0.5px;">
+         <children>
+            <FontAwesomeIconView glyphName="SORT_UP" layoutX="180.0" layoutY="21.0" wrappingWidth="6.857142925262451" />
+            <FontAwesomeIconView glyphName="SORT_DOWN" layoutX="180.0" layoutY="21.0" />
+            <JFXButton fx:id="hideTreeViewBtn" onAction="#hideTreeView" prefHeight="35.0" prefWidth="200.0" text="Select" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="32.0" layoutY="32.0" text="Add form question bank at the end" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="68.0" text="Select a category" />
+      <Label layoutX="37.0" layoutY="146.0" text="Search options" />
+      <Label layoutX="112.0" layoutY="229.0" text="Question" textFill="#007bff" />
+      <CheckBox fx:id="showChildQuestionBtn" layoutX="39.0" layoutY="176.0" mnemonicParsing="false" onAction="#change" text="Also show question form subcategories" />
+      <CheckBox layoutX="39.0" layoutY="204.0" mnemonicParsing="false" text="Also show old question" />
+      <FontAwesomeIconView fill="#0084ff" glyphName="SORT_DOWN" layoutX="122.0" layoutY="160.0" size="14" />
+      <FontAwesomeIconView fill="#0099ff" glyphName="SORT_UP" layoutX="99.0" layoutY="242.0" />
+      <Label layoutX="86.0" layoutY="229.0" text="T" textFill="#007bff" />
+      <CheckBox layoutX="64.0" layoutY="229.0" mnemonicParsing="false" text=" " />
+      <JFXButton layoutX="26.0" layoutY="647.0" style="-fx-background-color: BLUE;" text="ADD SELECTED QUESTION TO THE QUIZ" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ScrollPane layoutX="26.0" layoutY="262.0">
+         <content>
+            <VBox fx:id="vBoxD" prefHeight="379.0" prefWidth="550.0" />
+         </content>
+      </ScrollPane>
+      <TreeView fx:id="treeView" layoutX="156.0" layoutY="104.0" onMouseClicked="#selectItem" prefHeight="350.0" prefWidth="275.0" visible="false" />
+   </children>
+</AnchorPane>
