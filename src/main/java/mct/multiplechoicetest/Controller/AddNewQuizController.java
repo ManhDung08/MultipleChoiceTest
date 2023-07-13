@@ -38,6 +38,11 @@ public class AddNewQuizController {
         QuizMap quizMap1 = new QuizMap(1,Quiz.getQuizFromName(newQuizForExam.getText()),Integer.parseInt(quizTime.getText()));
         quizMap1.save(quizMap1);
     }
+        Stage stage = (Stage) addQuizForExamBtn.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("Home.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("app");
+        stage.setScene(scene);
 
     }
 

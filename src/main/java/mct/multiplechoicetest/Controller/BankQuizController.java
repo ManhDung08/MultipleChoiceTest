@@ -10,20 +10,27 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import mct.multiplechoicetest.Model.Question;
+import mct.multiplechoicetest.Model.QuestionMap;
 import mct.multiplechoicetest.Model.Quiz;
+import mct.multiplechoicetest.Model.QuizMap;
 import mct.multiplechoicetest.StartApp;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class BankQuizController implements Initializable {
+
+
+
+
     @FXML
     private JFXButton hideTreeViewBtn;
 
     @FXML
     private TreeView<String> treeView;
+
 
 
     @FXML
@@ -43,6 +50,8 @@ public class BankQuizController implements Initializable {
         TreeItem<String> rootItem = new TreeItem<>("Course: IT");
         treeView.setRoot(rootItem);
         addChildItem(rootItem, 1);
+        ;
+
 
 
     }
@@ -103,6 +112,7 @@ public class BankQuizController implements Initializable {
                 QuestionCard2Controller questionCard2Controller = fxmlLoader.getController();
                 questionCard2Controller.setQuestionInfor(question.getQuestionText()+"  "+question.getOption1Text()+"  "+question.getOption2Text()+"  "+question.getOption3Text()+"  "+
                         question.getOption4Text()+"  "+question.getOption5Text());
+                questionCard2Controller.setQuestion(question);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -135,6 +145,7 @@ public class BankQuizController implements Initializable {
                 QuestionCard2Controller questionCard2Controller = fxmlLoader.getController();
                 questionCard2Controller.setQuestionInfor(question.getQuestionText()+"  "+question.getOption1Text()+"  "+question.getOption2Text()+"  "+question.getOption3Text()+"  "+
                                                         question.getOption4Text()+"  "+question.getOption5Text());
+                questionCard2Controller.setQuestion(question);
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -151,6 +162,7 @@ public class BankQuizController implements Initializable {
                 QuestionCard2Controller questionCard2Controller = fxmlLoader.getController();
                 questionCard2Controller.setQuestionInfor(question.getQuestionText()+"  "+question.getOption1Text()+"  "+question.getOption2Text()+"  "+question.getOption3Text()+"  "+
                         question.getOption4Text()+"  "+question.getOption5Text());
+                questionCard2Controller.setQuestion(question);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -159,6 +171,32 @@ public class BankQuizController implements Initializable {
     }
 
     }
+    @FXML
+    private JFXButton saveQuestionMapBtn;
+    public void setDisPlayQuizMap(QuizMap maap){
+        this.quizMap=maap;
+        System.out.println(maap.getQuiz().getName());
+        System.out.println(quizMap.getQuiz().getName());
+    }
+    private static QuizMap quizMap;
+
+    private static List<Question> questions;
+
+    public  void setQuestions(List<Question> questions) {
+        BankQuizController.questions = questions;
+    }
+
+    @FXML
+    void saveQuestionMap(ActionEvent event ) throws IOException {
+      System.out.println(quizMap.getQuiz().getName());
+
+      for( Question question : questions){
+          QuestionMap questionMap = new QuestionMap(1,quizMap,question);
+          questionMap.save(quizMap,question);
+      }
+    }
+
+
 
 }
 

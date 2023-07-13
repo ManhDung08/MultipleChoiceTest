@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import mct.multiplechoicetest.Model.Question;
+import mct.multiplechoicetest.Model.QuestionMap;
 import mct.multiplechoicetest.Model.Quiz;
 import mct.multiplechoicetest.Model.QuizResults;
+
 
 public class StartApp extends Application {
     @Override

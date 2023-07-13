@@ -72,12 +72,16 @@ public class HomeController extends AddNewQuizController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        addShowQuizList();
+        try {
+            addShowQuizList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
 
-    private void addShowQuizList() {
+    private void addShowQuizList() throws IOException {
         List<QuizMap> quizMapList = QuizMap.getAllQuizMapFromDatabase();
 
         for(QuizMap quizMap : quizMapList){
@@ -87,11 +91,16 @@ public class HomeController extends AddNewQuizController implements Initializabl
                 quizLisstContainer.getChildren().add(node);
                 QuizCardController quizCardController = fxmlLoader.getController();
                 quizCardController.setStartQuizBtn(quizMap.getQuiz().getName());
+                quizCardController.setQuizMap(quizMap);
+
+
 
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
+
         }
 
 

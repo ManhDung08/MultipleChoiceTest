@@ -7,24 +7,37 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import mct.multiplechoicetest.Model.Quiz;
 import mct.multiplechoicetest.Model.QuizMap;
 import mct.multiplechoicetest.StartApp;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class QuizCardController implements Initializable {
+    private QuizMap quizMap;
+
+
+    public void setQuizMap(QuizMap quizMap) {
+        this.quizMap = quizMap;
+    }
 
     @FXML
     private JFXButton startQuizBtn;
 
+    private QuizMap selectedQuizMap ;
+
+
+    public JFXButton getStartQuizBtn() {
+        return startQuizBtn;
+    }
+
+    public void setStartQuizBtn(JFXButton startQuizBtn) {
+        this.startQuizBtn = startQuizBtn;
+    }
+
     @FXML
-    void startQuiz(ActionEvent event) throws IOException {
+    QuizMap startQuiz(ActionEvent event) throws IOException {
         Stage stage = (Stage) startQuizBtn.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("PreviewQuiz.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -32,10 +45,27 @@ public class QuizCardController implements Initializable {
         stage.setScene(scene);
 
         PreviewQuizController previewQuizController = fxmlLoader.getController();
-        previewQuizController.setButtonQuizName(startQuizBtn.getText());
-        previewQuizController.setLabelQuizName(startQuizBtn.getText());
-        previewQuizController.setGetTimeLimit(String.valueOf(QuizMap.getQuizMapByQuizId(Quiz.getQuizIdFromName(startQuizBtn.getText())).getTimeLimit())+" minute");
+        ////////////////////////////////////////////////////////////
+        QuizMap selectQuizmap = this.quizMap;
+        System.out.println(selectQuizmap.getId());
+
+        ////////////////////////////////////////////////////////////
+        previewQuizController.setButtonQuizName(selectQuizmap.getQuiz().getName());
+        previewQuizController.setLabelQuizName(selectQuizmap.getQuiz().getName());
+        previewQuizController.setGetTimeLimit(String.valueOf(selectQuizmap.getTimeLimit())+" minutes");
+        ////////////////////////////////////////
+        selectedQuizMap = selectQuizmap;
+        BankQuizController bankQuizController = new BankQuizController();
+        bankQuizController.setDisPlayQuizMap(selectQuizmap);
+        //////////
+
+
+        return selectQuizmap;
+
     }
+
+
+
 
     public void setStartQuizBtn(String value) {
         this.startQuizBtn.setText(value);
@@ -44,5 +74,8 @@ public class QuizCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
     }
+
+
 }

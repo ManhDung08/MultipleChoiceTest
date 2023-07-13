@@ -4,6 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
@@ -13,138 +14,143 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.AddQuestionController">
-   <children>
-      <AnchorPane layoutX="116.0" layoutY="35.0" prefHeight="18.0" prefWidth="750.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutY="18.0" prefHeight="62.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.AddQuestionController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="750.0">
          <children>
-            <Label layoutX="14.0" text="IT" textFill="RED">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <HBox layoutY="35.0" prefHeight="30.0" prefWidth="727.0">
+            <AnchorPane layoutX="116.0" layoutY="35.0" prefHeight="18.0" prefWidth="750.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutY="18.0" prefHeight="62.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <JFXButton prefHeight="46.0" prefWidth="52.0" text="Home" textFill="#f70000" />
-                  <Label prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="My courses" />
-                  <Label layoutX="62.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="THI CUỐI KỲ" textFill="#ff0707" />
-                  <Label layoutX="173.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="187.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="Question bank" textFill="#ff0707" />
-                  <Label layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="298.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="Questions" textFill="#ff0707" />
-                  <Label layoutX="396.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
-                  <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="214.0" text="Editing a Multiple question choice" />
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="102.0" prefHeight="717.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Adding a Multiple choice question" textFill="RED">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="38.0" layoutY="52.0" text="General" textFill="#ff0505">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <FontAwesomeIconView fill="#0090ff" glyphName="SORT_DOWN" layoutX="28.0" layoutY="67.0" text="" wrappingWidth="12.0" />
-            <Label layoutX="28.0" layoutY="86.0" text="Category" />
-            <Label layoutX="22.0" layoutY="123.0" text="Question Name" />
-            <Label layoutX="28.0" layoutY="173.0" text="Question text" />
-            <Label layoutX="28.0" layoutY="333.0" text="Default  mark" />
-            <TreeView fx:id="treeView" layoutX="338.0" layoutY="81.0" onMouseClicked="#selectItem" prefHeight="26.0" prefWidth="200.0" />
-            <TextField fx:id="newTextQuestion" layoutX="338.0" layoutY="119.0" prefHeight="26.0" prefWidth="273.0" />
-            <TextArea fx:id="newTextAreaQuestion" layoutX="338.0" layoutY="159.0" prefHeight="162.0" prefWidth="383.0" />
-            <TextField layoutX="338.0" layoutY="333.0" prefHeight="35.0" prefWidth="124.0" />
-            <JFXButton fx:id="setMore3ChoiceBtn" layoutX="314.0" layoutY="604.0" onAction="#setMore3Choice" style="-fx-background-color: blue;" text="BLANK FOR MORE 3 CHOICE" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="saveQuestionAndContinueBtn" layoutX="346.0" layoutY="643.0" onAction="#saveQuestionAndContinue" style="-fx-background-color: blue;" text="SAVE CHANGES AND CONTINUE EDITING" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="457.0" layoutY="680.0" style="-fx-background-color: blue;" text="CANCEL" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="314.0" layoutY="680.0" style="-fx-background-color: red;" text="SAVE CHANGES " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXButton>
-            <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="314.0" layoutY="125.0">
-               <image>
-                  <Image url="@../../image/material1.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="314.0" layoutY="166.0">
-               <image>
-                  <Image url="@../../image/material1.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="314.0" layoutY="335.0">
-               <image>
-                  <Image url="@../../image/material1.png" />
-               </image>
-            </ImageView>
-            <AnchorPane layoutY="366.0" prefHeight="239.0" prefWidth="750.0">
-               <children>
-                  <AnchorPane layoutX="375.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="120.0" AnchorPane.topAnchor="0.0">
+                  <Label layoutX="14.0" text="IT" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutY="35.0" prefHeight="30.0" prefWidth="727.0">
                      <children>
-                        <Label layoutX="21.0" layoutY="27.0" text="Choice 1" AnchorPane.topAnchor="27.0" />
-                        <Label layoutX="21.0" layoutY="61.0" text="Grade" />
-                        <TextField fx:id="newChoice1" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
-                        <ChoiceBox fx:id="choiceBox1" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                        <JFXButton prefHeight="46.0" prefWidth="52.0" text="Home" textFill="#f70000" />
+                        <Label prefHeight="30.0" prefWidth="13.0" text="\\" />
+                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="My courses" />
+                        <Label layoutX="62.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                        <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="THI CUỐI KỲ" textFill="#ff0707" />
+                        <Label layoutX="173.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                        <JFXButton layoutX="187.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="Question bank" textFill="#ff0707" />
+                        <Label layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                        <JFXButton layoutX="298.0" layoutY="10.0" prefHeight="30.0" prefWidth="97.0" text="Questions" textFill="#ff0707" />
+                        <Label layoutX="396.0" layoutY="10.0" prefHeight="30.0" prefWidth="13.0" text="\\" />
+                        <JFXButton layoutX="76.0" layoutY="10.0" prefHeight="30.0" prefWidth="214.0" text="Editing a Multiple question choice" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="102.0" prefHeight="717.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Adding a Multiple choice question" textFill="RED">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="52.0" text="General" textFill="#ff0505">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#0090ff" glyphName="SORT_DOWN" layoutX="28.0" layoutY="67.0" text="" wrappingWidth="12.0" />
+                  <Label layoutX="28.0" layoutY="86.0" text="Category" />
+                  <Label layoutX="22.0" layoutY="123.0" text="Question Name" />
+                  <Label layoutX="28.0" layoutY="173.0" text="Question text" />
+                  <Label layoutX="28.0" layoutY="333.0" text="Default  mark" />
+                  <TreeView fx:id="treeView" layoutX="338.0" layoutY="81.0" onMouseClicked="#selectItem" prefHeight="26.0" prefWidth="200.0" />
+                  <TextField fx:id="newTextQuestion" layoutX="338.0" layoutY="119.0" prefHeight="26.0" prefWidth="273.0" />
+                  <TextArea fx:id="newTextAreaQuestion" layoutX="338.0" layoutY="159.0" prefHeight="162.0" prefWidth="383.0" />
+                  <TextField layoutX="338.0" layoutY="333.0" prefHeight="35.0" prefWidth="124.0" />
+                  <JFXButton fx:id="setMore3ChoiceBtn" layoutX="314.0" layoutY="604.0" onAction="#setMore3Choice" style="-fx-background-color: blue;" text="BLANK FOR MORE 3 CHOICE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="saveQuestionAndContinueBtn" layoutX="346.0" layoutY="643.0" onAction="#saveQuestionAndContinue" style="-fx-background-color: blue;" text="SAVE CHANGES AND CONTINUE EDITING" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="457.0" layoutY="680.0" style="-fx-background-color: blue;" text="CANCEL" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="314.0" layoutY="680.0" style="-fx-background-color: red;" text="SAVE CHANGES " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="314.0" layoutY="125.0">
+                     <image>
+                        <Image url="@../../image/material1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="314.0" layoutY="166.0">
+                     <image>
+                        <Image url="@../../image/material1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="314.0" layoutY="335.0">
+                     <image>
+                        <Image url="@../../image/material1.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutY="366.0" prefHeight="239.0" prefWidth="750.0">
+                     <children>
+                        <AnchorPane layoutX="375.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="120.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="21.0" layoutY="27.0" text="Choice 1" AnchorPane.topAnchor="27.0" />
+                              <Label layoutX="21.0" layoutY="61.0" text="Grade" />
+                              <TextField fx:id="newChoice1" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
+                              <ChoiceBox fx:id="choiceBox1" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="375.0" layoutY="112.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="120.0">
+                           <children>
+                              <Label layoutX="21.0" layoutY="27.0" text="Choice 2" />
+                              <Label layoutX="21.0" layoutY="61.0" text="Grade" />
+                              <TextField fx:id="newChoice2" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
+                              <ChoiceBox fx:id="choiceBox2" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="375.0" layoutY="112.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="120.0">
+                  <AnchorPane fx:id="popup3Choice" layoutY="371.0" prefHeight="231.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Label layoutX="21.0" layoutY="27.0" text="Choice 2" />
-                        <Label layoutX="21.0" layoutY="61.0" text="Grade" />
-                        <TextField fx:id="newChoice2" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
-                        <ChoiceBox fx:id="choiceBox2" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                        <AnchorPane layoutY="119.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;">
+                           <children>
+                              <Label layoutX="21.0" layoutY="27.0" text="Choice 5" />
+                              <Label layoutX="21.0" layoutY="61.0" text="Grade" />
+                              <TextField fx:id="newChoice5" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
+                              <ChoiceBox fx:id="choiceBox5" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="374.0" prefHeight="101.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="120.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="21.0" layoutY="27.0" text="Choice 3" AnchorPane.topAnchor="27.0" />
+                              <Label layoutX="21.0" layoutY="61.0" text="Grade" />
+                              <TextField fx:id="newChoice3" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
+                              <ChoiceBox fx:id="choiceBox3" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="374.0" layoutY="107.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="120.0">
+                           <children>
+                              <Label layoutX="21.0" layoutY="27.0" text="Choice 4" />
+                              <Label layoutX="21.0" layoutY="61.0" text="Grade" />
+                              <TextField fx:id="newChoice4" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
+                              <ChoiceBox fx:id="choiceBox4" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="popup3Choice" layoutY="371.0" prefHeight="231.0" prefWidth="750.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <AnchorPane layoutY="119.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;">
-                     <children>
-                        <Label layoutX="21.0" layoutY="27.0" text="Choice 5" />
-                        <Label layoutX="21.0" layoutY="61.0" text="Grade" />
-                        <TextField fx:id="newChoice5" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
-                        <ChoiceBox fx:id="choiceBox5" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="374.0" prefHeight="101.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="120.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="21.0" layoutY="27.0" text="Choice 3" AnchorPane.topAnchor="27.0" />
-                        <Label layoutX="21.0" layoutY="61.0" text="Grade" />
-                        <TextField fx:id="newChoice3" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
-                        <ChoiceBox fx:id="choiceBox3" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="374.0" layoutY="107.0" prefHeight="107.0" prefWidth="359.0" style="-fx-background-color: D3D3D3;" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="120.0">
-                     <children>
-                        <Label layoutX="21.0" layoutY="27.0" text="Choice 4" />
-                        <Label layoutX="21.0" layoutY="61.0" text="Grade" />
-                        <TextField fx:id="newChoice4" layoutX="85.0" layoutY="22.0" prefHeight="26.0" prefWidth="251.0" />
-                        <ChoiceBox fx:id="choiceBox4" layoutX="85.0" layoutY="57.0" prefHeight="26.0" prefWidth="83.0" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
-   </children>
-</AnchorPane>
+   </content>
+</ScrollPane>
