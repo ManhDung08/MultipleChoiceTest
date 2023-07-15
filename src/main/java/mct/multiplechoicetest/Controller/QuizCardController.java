@@ -7,11 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import mct.multiplechoicetest.Model.Question;
+import mct.multiplechoicetest.Model.QuestionMap;
 import mct.multiplechoicetest.Model.QuizMap;
 import mct.multiplechoicetest.StartApp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class QuizCardController implements Initializable {
@@ -25,7 +28,7 @@ public class QuizCardController implements Initializable {
     @FXML
     private JFXButton startQuizBtn;
 
-    private QuizMap selectedQuizMap ;
+    private static QuizMap selectedQuizMap ;
 
 
     public JFXButton getStartQuizBtn() {
@@ -45,11 +48,14 @@ public class QuizCardController implements Initializable {
         stage.setScene(scene);
 
         PreviewQuizController previewQuizController = fxmlLoader.getController();
+
         ////////////////////////////////////////////////////////////
         QuizMap selectQuizmap = this.quizMap;
         System.out.println(selectQuizmap.getId());
 
         ////////////////////////////////////////////////////////////
+
+
         previewQuizController.setButtonQuizName(selectQuizmap.getQuiz().getName());
         previewQuizController.setLabelQuizName(selectQuizmap.getQuiz().getName());
         previewQuizController.setGetTimeLimit(String.valueOf(selectQuizmap.getTimeLimit())+" minutes");
@@ -57,12 +63,18 @@ public class QuizCardController implements Initializable {
         selectedQuizMap = selectQuizmap;
         BankQuizController bankQuizController = new BankQuizController();
         bankQuizController.setDisPlayQuizMap(selectQuizmap);
-        //////////
+
+        ////////////////////
+        previewQuizController.setQuizMap(selectQuizmap);
+
+
+
 
 
         return selectQuizmap;
 
     }
+
 
 
 

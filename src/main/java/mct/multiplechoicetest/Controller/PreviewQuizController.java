@@ -5,17 +5,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import mct.multiplechoicetest.Model.Question;
+import mct.multiplechoicetest.Model.QuestionMap;
+import mct.multiplechoicetest.Model.QuizMap;
 import mct.multiplechoicetest.StartApp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PreviewQuizController implements Initializable {
@@ -55,10 +61,7 @@ public class PreviewQuizController implements Initializable {
     }
     @FXML
     private TextField labelGrade;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        labelGrade.setText("10.00");
-    }
+
     @FXML
     private JFXButton changPaneBtn;
     @FXML
@@ -96,9 +99,56 @@ public class PreviewQuizController implements Initializable {
         stage.setTitle("app");
         stage.setScene(scene);
     }
+    @FXML
+    private ScrollPane listQuestions;
+    @FXML
+    private AnchorPane listQuestionForExam;
+
 
     @FXML
     void goRandomQuestion(ActionEvent event) {
+
+    }
+////////////////////////////////////////
+
+    private static QuizMap quizMap;
+
+    public void setQuizMap(QuizMap quizMap) {
+        this.quizMap = quizMap;
+    }
+    @FXML
+    private VBox vboxDD;
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(quizMap != null){
+            listQuestions.setVisible(true);
+            List<Question>questions = QuestionMap.getAllQuestionsByQuizMap(quizMap);
+            int i = 1;
+            for (Question question : questions){
+
+                FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("QuestionCard3.fxml"));
+
+                try {
+                    Node node = fxmlLoader.load();
+                    vboxDD.getChildren().add(node);
+                    QuestionCard3Controller questionCard3Controller = fxmlLoader.getController();
+                    questionCard3Controller.setStt(String.valueOf(i));
+                    i++;
+                    questionCard3Controller.setQuestionInfor(question.getQuestionText()+" "+question.getOption1Text()
+                                                                +" "+ question.getOption2Text()+" "+question.getOption3Text()
+                                                                +" "+ question.getOption4Text()+" "+question.getOption5Text());
+                    questionCard3Controller.setQuestion(question);
+                    questionCard3Controller.setQuestionMarks("1.00");
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            };
+        }
+        labelGrade.setText("10.00");
 
     }
 

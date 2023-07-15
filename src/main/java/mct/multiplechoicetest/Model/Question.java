@@ -6,6 +6,9 @@ import java.util.ArrayList;
 public class Question {
     private Quiz quiz;
 
+    public Question(int questionId, String questionText, String questionImg, int questionMark, String option1Text, String option1Img, int option1Mark, String option2Text, String option2Img, int option2Mark, String option3Text, String option3Img, int option3Mark, String option4Text, String option4Img, int option4Mark, String option5Text, String option5Img, int option5Mark, String answer) {
+    }
+
     public String getQuestionText() {
         return questionText;
     }

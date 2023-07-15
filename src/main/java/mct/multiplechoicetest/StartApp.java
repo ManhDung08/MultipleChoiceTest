@@ -14,6 +14,7 @@ public class StartApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("Home.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("BTL lập trình HDT");
         stage.setScene(scene);

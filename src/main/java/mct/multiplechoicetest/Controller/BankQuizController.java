@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import mct.multiplechoicetest.Model.Question;
 import mct.multiplechoicetest.Model.QuestionMap;
 import mct.multiplechoicetest.Model.Quiz;
@@ -31,6 +33,8 @@ public class BankQuizController implements Initializable {
     @FXML
     private TreeView<String> treeView;
 
+    public BankQuizController() throws IOException {
+    }
 
 
     @FXML
@@ -50,7 +54,6 @@ public class BankQuizController implements Initializable {
         TreeItem<String> rootItem = new TreeItem<>("Course: IT");
         treeView.setRoot(rootItem);
         addChildItem(rootItem, 1);
-        ;
 
 
 
@@ -175,8 +178,8 @@ public class BankQuizController implements Initializable {
     private JFXButton saveQuestionMapBtn;
     public void setDisPlayQuizMap(QuizMap maap){
         this.quizMap=maap;
-        System.out.println(maap.getQuiz().getName());
-        System.out.println(quizMap.getQuiz().getName());
+
+
     }
     private static QuizMap quizMap;
 
@@ -189,11 +192,24 @@ public class BankQuizController implements Initializable {
     @FXML
     void saveQuestionMap(ActionEvent event ) throws IOException {
       System.out.println(quizMap.getQuiz().getName());
-
-      for( Question question : questions){
-          QuestionMap questionMap = new QuestionMap(1,quizMap,question);
-          questionMap.save(quizMap,question);
+      if(questions != null){
+          for(Question question : questions){
+              QuestionMap questionMap = new QuestionMap(1, quizMap, question);
+              questionMap.save(quizMap,question);
       }
+
+        }
+
+        Stage stage = (Stage) saveQuestionMapBtn.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("PreviewQuiz.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("app");
+        stage.setScene(scene);
+
+
+
+
+
     }
 
 

@@ -5,6 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mct.multiplechoicetest.Controller.PreviewQuizController">
    <children>
-      <AnchorPane fx:id="paneTruoc" layoutY="153.0" prefHeight="364.0" prefWidth="743.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="paneTruoc" layoutY="153.0" prefHeight="364.0" prefWidth="743.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="labelQuizName" layoutX="14.0" layoutY="14.0" text="QuizName" textFill="#e40000">
                <font>
@@ -68,7 +69,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneSau" layoutY="150.0" prefHeight="370.0" prefWidth="743.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane fx:id="paneSau" layoutY="150.0" prefHeight="370.0" prefWidth="743.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="editQuizL" layoutX="130.0" layoutY="23.0" text="Editing Quiz" textFill="RED">
                <font>
@@ -152,6 +153,14 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <ScrollPane fx:id="listQuestions" layoutY="185.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <content>
+                  <AnchorPane fx:id="listQuestionForExam" prefHeight="285.0" prefWidth="743.0">
+                     <children>
+                        <VBox fx:id="vboxDD" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="56.0" prefWidth="743.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
