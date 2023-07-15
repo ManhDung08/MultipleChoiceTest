@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Load {
 
     public static void main(String[] args) {
-        String filename = "D:\\questions.txt"; // Replace with the actual file path
+        String filename = "D:\\hoclaptrinhjava\\MultipleChoiceTest\\1. Đối với sản phẩm bảo hiểm liên k.txt"; // Replace with the actual file path
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;

@@ -23,22 +23,22 @@ public class QuestionDAO implements DAOinterface<Question> {
             //statement.setInt(1,question.getQuestionId());
             statement.setString(2, question.getQuestionText());
             statement.setString(3, question.getQuestionImg());
-            statement.setInt(4, question.getQuestionMark());
+            statement.setFloat(4, question.getQuestionMark());
             statement.setString(5, question.getOption1Text());
             statement.setString(6, question.getOption1Img());
-            statement.setInt(7, question.getOption1Mark());
+            statement.setFloat(7, question.getOption1Mark());
             statement.setString(8, question.getOption2Text());
             statement.setString(9, question.getOption2Img());
-            statement.setInt(10, question.getOption2Mark());
+            statement.setFloat(10, question.getOption2Mark());
             statement.setString(11, question.getOption3Text());
             statement.setString(12, question.getOption3Img());
-            statement.setInt(13, question.getOption3Mark());
+            statement.setFloat(13, question.getOption3Mark());
             statement.setString(14, question.getOption4Text());
             statement.setString(15, question.getOption4Img());
-            statement.setInt(16, question.getOption4Mark());
+            statement.setFloat(16, question.getOption4Mark());
             statement.setString(17, question.getOption5Text());
             statement.setString(18, question.getOption5Img());
-            statement.setInt(19, question.getOption5Mark());
+            statement.setFloat(19, question.getOption5Mark());
             statement.setString(20, question.getAnswer());
             statement.setInt(21, question.getQuiz().getQuiz_id());
 
@@ -65,22 +65,22 @@ public class QuestionDAO implements DAOinterface<Question> {
                              "WHERE question_id = ?")) {
             statement.setString(1, question.getQuestionText());
             statement.setString(2, question.getQuestionImg());
-            statement.setInt(3, question.getQuestionMark());
+            statement.setFloat(3, question.getQuestionMark());
             statement.setString(4, question.getOption1Text());
             statement.setString(5, question.getOption1Img());
-            statement.setInt(6, question.getOption1Mark());
+            statement.setFloat(6, question.getOption1Mark());
             statement.setString(7, question.getOption2Text());
             statement.setString(8, question.getOption2Img());
-            statement.setInt(9, question.getOption2Mark());
+            statement.setFloat(9, question.getOption2Mark());
             statement.setString(10, question.getOption3Text());
             statement.setString(11, question.getOption3Img());
-            statement.setInt(12, question.getOption3Mark());
+            statement.setFloat(12, question.getOption3Mark());
             statement.setString(13, question.getOption4Text());
             statement.setString(14, question.getOption4Img());
-            statement.setInt(15, question.getOption4Mark());
+            statement.setFloat(15, question.getOption4Mark());
             statement.setString(16, question.getOption5Text());
             statement.setString(17, question.getOption5Img());
-            statement.setInt(18, question.getOption5Mark());
+            statement.setFloat(18, question.getOption5Mark());
             statement.setString(19, question.getAnswer());
             statement.setInt(20, question.getQuiz().getQuiz_id());
 
@@ -125,22 +125,22 @@ public class QuestionDAO implements DAOinterface<Question> {
                 question.setQuestionId(resultSet.getInt("question_id"));
                 question.setQuestionText(resultSet.getString("question_text"));
                 question.setQuestionImg(resultSet.getString("question_img"));
-                question.setQuestionMark(resultSet.getInt("question_mark"));
+                question.setQuestionMark(resultSet.getFloat("question_mark"));
                 question.setOption1Text(resultSet.getString("option1_text"));
                 question.setOption1Img(resultSet.getString("option1_img"));
-                question.setOption1Mark(resultSet.getInt("option1_mark"));
+                question.setOption1Mark(resultSet.getFloat("option1_mark"));
                 question.setOption2Text(resultSet.getString("option2_text"));
                 question.setOption2Img(resultSet.getString("option2_img"));
-                question.setOption2Mark(resultSet.getInt("option2_mark"));
+                question.setOption2Mark(resultSet.getFloat("option2_mark"));
                 question.setOption3Text(resultSet.getString("option3_text"));
                 question.setOption3Img(resultSet.getString("option3_img"));
-                question.setOption3Mark(resultSet.getInt("option3_mark"));
+                question.setOption3Mark(resultSet.getFloat("option3_mark"));
                 question.setOption4Text(resultSet.getString("option4_text"));
                 question.setOption4Img(resultSet.getString("option4_img"));
-                question.setOption4Mark(resultSet.getInt("option4_mark"));
+                question.setOption4Mark(resultSet.getFloat("option4_mark"));
                 question.setOption5Text(resultSet.getString("option5_text"));
                 question.setOption5Img(resultSet.getString("option5_img"));
-                question.setOption5Mark(resultSet.getInt("option5_mark"));
+                question.setOption5Mark(resultSet.getFloat("option5_mark"));
                 question.setAnswer(resultSet.getString("answer"));
                 // Set the Quiz object for the question
 
@@ -166,22 +166,22 @@ public class QuestionDAO implements DAOinterface<Question> {
                 if (resultSet.next()) {
                     question.setQuestionText(resultSet.getString("question_text"));
                     question.setQuestionImg(resultSet.getString("question_img"));
-                    question.setQuestionMark(resultSet.getInt("question_mark"));
+                    question.setQuestionMark(resultSet.getFloat("question_mark"));
                     question.setOption1Text(resultSet.getString("option1_text"));
                     question.setOption1Img(resultSet.getString("option1_img"));
-                    question.setOption1Mark(resultSet.getInt("option1_mark"));
+                    question.setOption1Mark(resultSet.getFloat("option1_mark"));
                     question.setOption2Text(resultSet.getString("option2_text"));
                     question.setOption2Img(resultSet.getString("option2_img"));
-                    question.setOption2Mark(resultSet.getInt("option2_mark"));
+                    question.setOption2Mark(resultSet.getFloat("option2_mark"));
                     question.setOption3Text(resultSet.getString("option3_text"));
                     question.setOption3Img(resultSet.getString("option3_img"));
-                    question.setOption3Mark(resultSet.getInt("option3_mark"));
+                    question.setOption3Mark(resultSet.getFloat("option3_mark"));
                     question.setOption4Text(resultSet.getString("option4_text"));
                     question.setOption4Img(resultSet.getString("option4_img"));
-                    question.setOption4Mark(resultSet.getInt("option4_mark"));
+                    question.setOption4Mark(resultSet.getFloat("option4_mark"));
                     question.setOption5Text(resultSet.getString("option5_text"));
                     question.setOption5Img(resultSet.getString("option5_img"));
-                    question.setOption5Mark(resultSet.getInt("option5_mark"));
+                    question.setOption5Mark(resultSet.getFloat("option5_mark"));
                     question.setAnswer(resultSet.getString("answer"));
                     // Set the Quiz object for the question
                 }

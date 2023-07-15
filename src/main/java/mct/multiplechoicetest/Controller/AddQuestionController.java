@@ -3,21 +3,80 @@ package mct.multiplechoicetest.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import mct.multiplechoicetest.Dao.QuestionDAO;
 import mct.multiplechoicetest.Model.Question;
 import mct.multiplechoicetest.Model.Quiz;
+import mct.multiplechoicetest.StartApp;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddQuestionController implements Initializable {
+    @FXML
+    private Label Labell;
+
+    public void setChoiceBox1(String value) {
+        this.choiceBox1.setValue(value);
+    }
+
+    public void setChoiceBox2(String value) {
+        this.choiceBox2.setValue(value);
+    }
+
+    public void setChoiceBox3(String value) {
+        this.choiceBox3.setValue(value);
+    }
+
+    public void setChoiceBox4(String value) {
+        this.choiceBox4.setValue(value);
+    }
+
+    public void setChoiceBox5(String value) {
+        this.choiceBox5.setValue(value);
+    }
+
+    public void setNewChoice1(String value) {
+        this.newChoice1.setText(value);
+    }
+
+    public void setSaveQuestionAndContinueBtn(JFXButton saveQuestionAndContinueBtn) {
+        this.saveQuestionAndContinueBtn = saveQuestionAndContinueBtn;
+    }
+
+    public void setNewChoice2(String value) {
+        this.newChoice2.setText(value);
+    }
+
+    public void setNewChoice3(String value) {
+        this.newChoice3.setText(value);
+    }
+
+    public void setNewChoice4(String value) {
+        this.newChoice4.setText(value);
+    }
+
+    public void setNewChoice5(String value) {
+        this.newChoice5.setText(value);
+    }
+
+    public void setNewTextAreaQuestion(String value) {
+        this.newTextAreaQuestion.setText(value);
+    }
+
+    public void setLabell(String value) {
+        Labell.setText(value);
+    }
 
     @FXML
     private AnchorPane popup3Choice;
@@ -79,6 +138,9 @@ public class AddQuestionController implements Initializable {
     private ChoiceBox<String> choiceBox4;
     @FXML
     private ChoiceBox<String> choiceBox5;
+
+    @FXML
+    private TextField questionMark;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TreeItem<String> rootItem = new TreeItem<>("Default");
@@ -101,6 +163,7 @@ public class AddQuestionController implements Initializable {
         getPathFile(newChoice4);
         getPathFile(newChoice5);
         getPathFile2(newTextAreaQuestion);
+        questionMark.setText("1");
     }
     //
     @FXML
@@ -169,35 +232,248 @@ public class AddQuestionController implements Initializable {
             return string;
         }
     }
+
+    public static float processString(String string) {
+            if (string == "None") {
+                return 0;
+            } else if (string.endsWith("%")) {
+                String numberString = string.substring(0, string.length() - 1);
+                return (float) (Float.parseFloat(numberString) *0.01);
+            } else {
+                return (float) (Float.parseFloat(string));
+            }
+        }
     @FXML
     private JFXButton saveQuestionAndContinueBtn;
     @FXML
-    void saveQuestionAndContinue(ActionEvent event) {
+  public   void saveQuestionAndContinue(ActionEvent event) {
+
         Question question = new Question();
         question.setQuiz(Quiz.getQuizFromName(xuLiChuoi(treeView.getSelectionModel().getSelectedItem().getValue())));
-        question.setQuestionText(newTextQuestion.getText()+textCheck(newTextAreaQuestion.getText()));
+        question.setQuestionText(newTextQuestion.getText() + textCheck(newTextAreaQuestion.getText()));
         question.setQuestionImg(fileCheck(newTextAreaQuestion.getText()));
         question.setQuestionMark(1);
         question.setOption1Text(textCheck(newChoice1.getText()));
         question.setOption1Img(fileCheck(newChoice1.getText()));
-        question.setOption1Mark(1);
+        question.setOption1Mark(processString(choiceBox1.getValue()));
         question.setOption2Text(textCheck(newChoice2.getText()));
         question.setOption2Img(fileCheck(newChoice2.getText()));
-        question.setOption2Mark(0);
+        question.setOption2Mark(processString(choiceBox2.getValue()));
         question.setOption3Text(textCheck(newChoice3.getText()));
         question.setOption3Img(fileCheck(newChoice3.getText()));
-        question.setOption3Mark(0);
+        if(choiceBox3.getValue().length() != 0){
+            question.setOption3Mark(processString(choiceBox3.getValue()));
+        }
+
         question.setOption4Text(textCheck(newChoice4.getText()));
         question.setOption4Img(fileCheck(newChoice4.getText()));
-        question.setOption4Mark(0);
+        if(choiceBox4.getValue().length() != 0){
+            question.setOption4Mark(processString(choiceBox4.getValue()));
+        }
+
         question.setOption5Text(textCheck(newChoice5.getText()));
         question.setOption5Img(fileCheck(newChoice5.getText()));
-        question.setOption5Mark(0);
-        question.setAnswer("Paris");
+        if(choiceBox5.getValue().length() != 0){
+            question.setOption5Mark(processString(choiceBox5.getValue()));
+        }
 
-        QuestionDAO questionDAO = new QuestionDAO();
-        questionDAO.save(question);
-        // chưa xong
+        if (choiceBox1.getValue() == "100%") {
+            question.setAnswer("A");
+            question.setOption2Mark(0);
+            question.setOption3Mark(0);
+            question.setOption4Mark(0);
+            question.setOption5Mark(0);
+
+
+        } else if (choiceBox2.getValue() == "100%") {
+            question.setAnswer("B");
+            question.setOption1Mark(0);
+            question.setOption3Mark(0);
+            question.setOption4Mark(0);
+            question.setOption5Mark(0);
+        }  else if(choiceBox3.getValue() == "100%"){
+            question.setAnswer("C");
+            question.setOption1Mark(0);
+            question.setOption2Mark(0);
+            question.setOption4Mark(0);
+            question.setOption5Mark(0);
+        }   else if(choiceBox4.getValue() == "100%"){
+            question.setAnswer("D");
+            question.setOption1Mark(0);
+            question.setOption2Mark(0);
+            question.setOption3Mark(0);
+            question.setOption5Mark(0);
+        }   else if(choiceBox5.getValue() == "100%"){
+            question.setAnswer("E");
+            question.setOption1Mark(0);
+            question.setOption2Mark(0);
+            question.setOption3Mark(0);
+            question.setOption4Mark(0);
+        }
+
+        if(newChoice1.getText() == null) {
+            question.setOption1Text(newChoice2.getText());
+            question.setOption1Mark(processString(choiceBox2.getValue()));
+            newChoice2.setText(null);
+            if(newChoice2.getText() == null) {
+                question.setOption2Text(newChoice3.getText());
+                question.setOption2Mark(processString(choiceBox3.getValue()));
+                newChoice3.setText(null);
+                if(newChoice3.getText() == null) {
+                    question.setOption3Text(newChoice4.getText());
+                    question.setOption3Mark(processString(choiceBox4.getValue()));
+                    newChoice4.setText(null);
+                    if(newChoice4.getText() == null){
+                        question.setOption4Text(newChoice5.getText());
+                        question.setOption4Mark(processString(choiceBox5.getValue()));
+                        newChoice5.setText(null);
+        }
+
+         }
+
+         }
+
+        }
+
+
+
+        if(newTextQuestion.getText().length()!=0 && newTextAreaQuestion.getText().length() != 0 ) {
+            QuestionDAO questionDAO = new QuestionDAO();
+            questionDAO.save(question);
+            QuestionDAO questionDAO1= new QuestionDAO();
+            questionDAO1.delete(deleteQuestions);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("thong bao");
+            alert.setContentText("success");
+            alert.showAndWait();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("thong bao");
+            alert.setContentText(" Select category anh fill in the information question form ! ");
+            alert.showAndWait();
+        }
+
+
+
+
     }
+    private Question deleteQuestions;
+
+    public void setDeleteQuestions(Question deleteQuestions) {
+        this.deleteQuestions = deleteQuestions;
+    }
+
+    @FXML
+    private JFXButton saveChangeButton;
+    @FXML
+    void saveChange(ActionEvent event) throws IOException {
+        Question question = new Question();
+        question.setQuiz(Quiz.getQuizFromName(xuLiChuoi(treeView.getSelectionModel().getSelectedItem().getValue())));
+        question.setQuestionText(newTextQuestion.getText() + textCheck(newTextAreaQuestion.getText()));
+        question.setQuestionImg(fileCheck(newTextAreaQuestion.getText()));
+        question.setQuestionMark(1);
+        question.setOption1Text(textCheck(newChoice1.getText()));
+        question.setOption1Img(fileCheck(newChoice1.getText()));
+        question.setOption1Mark(processString(choiceBox1.getValue()));
+        question.setOption2Text(textCheck(newChoice2.getText()));
+        question.setOption2Img(fileCheck(newChoice2.getText()));
+        question.setOption2Mark(processString(choiceBox2.getValue()));
+        question.setOption3Text(textCheck(newChoice3.getText()));
+        question.setOption3Img(fileCheck(newChoice3.getText()));
+        if(choiceBox3.getValue().length() != 0){
+            question.setOption3Mark(processString(choiceBox3.getValue()));
+        }
+
+        question.setOption4Text(textCheck(newChoice4.getText()));
+        question.setOption4Img(fileCheck(newChoice4.getText()));
+        if(choiceBox4.getValue().length() != 0){
+            question.setOption4Mark(processString(choiceBox4.getValue()));
+        }
+
+        question.setOption5Text(textCheck(newChoice5.getText()));
+        question.setOption5Img(fileCheck(newChoice5.getText()));
+        if(choiceBox5.getValue().length() != 0){
+            question.setOption5Mark(processString(choiceBox5.getValue()));
+        }
+
+        if (choiceBox1.getValue() == "100%") {
+            question.setAnswer("A");
+            question.setOption2Mark(0);
+            question.setOption3Mark(0);
+            question.setOption4Mark(0);
+            question.setOption5Mark(0);
+
+
+        } else if (choiceBox2.getValue() == "100%") {
+            question.setAnswer("B");
+            question.setOption1Mark(0);
+            question.setOption3Mark(0);
+            question.setOption4Mark(0);
+            question.setOption5Mark(0);
+        }  else if(choiceBox3.getValue() == "100%"){
+            question.setAnswer("C");
+            question.setOption1Mark(0);
+            question.setOption2Mark(0);
+            question.setOption4Mark(0);
+            question.setOption5Mark(0);
+        }   else if(choiceBox4.getValue() == "100%"){
+            question.setAnswer("D");
+            question.setOption1Mark(0);
+            question.setOption2Mark(0);
+            question.setOption3Mark(0);
+            question.setOption5Mark(0);
+        }   else if(choiceBox5.getValue() == "100%"){
+            question.setAnswer("E");
+            question.setOption1Mark(0);
+            question.setOption2Mark(0);
+            question.setOption3Mark(0);
+            question.setOption4Mark(0);
+        }
+
+        if(newChoice1.getText() == null) {
+            question.setOption1Text(newChoice2.getText());
+            question.setOption1Mark(processString(choiceBox2.getValue()));
+            newChoice2.setText(null);
+            if(newChoice2.getText() == null) {
+                question.setOption2Text(newChoice3.getText());
+                question.setOption2Mark(processString(choiceBox3.getValue()));
+                newChoice3.setText(null);
+                if(newChoice3.getText() == null) {
+                    question.setOption3Text(newChoice4.getText());
+                    question.setOption3Mark(processString(choiceBox4.getValue()));
+                    newChoice4.setText(null);
+                    if(newChoice4.getText() == null){
+                        question.setOption4Text(newChoice5.getText());
+                        question.setOption4Mark(processString(choiceBox5.getValue()));
+                        newChoice5.setText(null);
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        if(newTextQuestion.getText().length()!=0 && newTextAreaQuestion.getText().length() != 0 ) {
+            QuestionDAO questionDAO = new QuestionDAO();
+            questionDAO.save(question);
+            QuestionDAO questionDAO1= new QuestionDAO();
+            questionDAO1.delete(deleteQuestions);
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("thong bao");
+            alert.setContentText(" unsuccessful");
+            alert.showAndWait();
+        }  Stage stage = (Stage) saveChangeButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("ShowQuestion.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("app");
+        stage.setScene(scene);
+
+
+    }
+
 
 }

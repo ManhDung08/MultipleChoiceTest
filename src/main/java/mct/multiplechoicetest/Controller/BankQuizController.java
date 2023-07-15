@@ -88,7 +88,7 @@ public class BankQuizController implements Initializable {
     }
 
 
-    private List<Question> addChildQuestion(List<Question> questions, int parenId) {
+   private List<Question> addChildQuestion(List<Question> questions, int parenId) {
         List<Quiz> quizzes = Quiz.getAllQuizzesFromDatabase();
         for (Quiz quiz : quizzes) {
             if (quiz.getParent_id() == parenId) {
@@ -97,7 +97,7 @@ public class BankQuizController implements Initializable {
                 addChildQuestion(questions, quiz.getQuiz_id());
             }
         }
-        return questions;
+         return questions;
     }
 
 

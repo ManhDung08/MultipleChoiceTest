@@ -110,22 +110,22 @@ public class QuestionMap {
                     question.setQuestionId(resultSet.getInt("question_id"));
                     question.setQuestionText(resultSet.getString("question_text"));
                     question.setQuestionImg(resultSet.getString("question_img"));
-                    question.setQuestionMark(resultSet.getInt("question_mark"));
+                    question.setQuestionMark(resultSet.getFloat("question_mark"));
                     question.setOption1Text(resultSet.getString("option1_text"));
                     question.setOption1Img(resultSet.getString("option1_img"));
-                    question.setOption1Mark(resultSet.getInt("option1_mark"));
+                    question.setOption1Mark(resultSet.getFloat("option1_mark"));
                     question.setOption2Text(resultSet.getString("option2_text"));
                     question.setOption2Img(resultSet.getString("option2_img"));
-                    question.setOption2Mark(resultSet.getInt("option2_mark"));
+                    question.setOption2Mark(resultSet.getFloat("option2_mark"));
                     question.setOption3Text(resultSet.getString("option3_text"));
                     question.setOption3Img(resultSet.getString("option3_img"));
-                    question.setOption3Mark(resultSet.getInt("option3_mark"));
+                    question.setOption3Mark(resultSet.getFloat("option3_mark"));
                     question.setOption4Text(resultSet.getString("option4_text"));
                     question.setOption4Img(resultSet.getString("option4_img"));
-                    question.setOption4Mark(resultSet.getInt("option4_mark"));
+                    question.setOption4Mark(resultSet.getFloat("option4_mark"));
                     question.setOption5Text(resultSet.getString("option5_text"));
                     question.setOption5Img(resultSet.getString("option5_img"));
-                    question.setOption5Mark(resultSet.getInt("option5_mark"));
+                    question.setOption5Mark(resultSet.getFloat("option5_mark"));
                     question.setAnswer(resultSet.getString("answer"));
                     // Set the Quiz object for the question
 
@@ -139,7 +139,7 @@ public class QuestionMap {
 
 
     }
-    public static ActionEvent deleteQuestionMapByQuestion(Question question) {
+    public static void deleteQuestionsAndUpdateDB(List<Question> questions) {
         try {
             // Register the JDBC driver
             Class.forName("org.sqlite.JDBC");
@@ -149,27 +149,30 @@ public class QuestionMap {
 
             // Open a connection to the database
             Connection connection = DriverManager.getConnection(url);
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM QuestionMap WHERE QuestionID = ?");
+            PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM QuestionMap WHERE QuestionID = ?");
 
-            // Set the parameter value
-            statement.setInt(1, question.getQuestionId());
+            // Disable auto-commit to start a transaction
+            connection.setAutoCommit(false);
 
-            // Execute the SQL statement
-            statement.executeUpdate();
-            System.out.println("QuestionMap deleted successfully");
+            // Iterate over the questions and delete them one by one
+            for (Question question : questions) {
+                // Set the parameter value
+                deleteStatement.setInt(1, question.getQuestionId());
+
+                // Execute the SQL statement
+                deleteStatement.executeUpdate();
+            }
+
+            // Commit the transaction
+            connection.commit();
+            System.out.println("Questions deleted successfully");
 
             // Close the statement and connection
-            statement.close();
+            deleteStatement.close();
             connection.close();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        return null;
     }
-
-
-
-
-
 
 }

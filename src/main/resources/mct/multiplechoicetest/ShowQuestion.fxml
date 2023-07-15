@@ -4,7 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TreeView?>
@@ -61,7 +61,6 @@
                                        </children>
                                     </HBox>
                                     <CheckBox layoutX="14.0" layoutY="13.0" mnemonicParsing="false" />
-                                    <ListView fx:id="listView" prefHeight="266.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
                                     <Label layoutX="533.0" layoutY="23.0" text="Actions">
                                        <font>
                                           <Font size="13.0" />
@@ -69,6 +68,11 @@
                                     </Label>
                                     <FontAwesomeIconView fill="#0090ff" glyphName="SORT_UP" layoutX="51.0" layoutY="18.0" />
                                     <Label layoutX="38.0" layoutY="5.0" text="T" textFill="#0077ff" />
+                                    <ScrollPane layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
+                                       <content>
+                                          <VBox fx:id="vBoxD" prefHeight="267.0" prefWidth="600.0" />
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </AnchorPane>
                               <Label layoutX="14.0" layoutY="14.0" text="Question bank" textFill="#ff2c07">

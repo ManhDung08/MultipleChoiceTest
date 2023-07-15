@@ -21,6 +21,7 @@ import mct.multiplechoicetest.StartApp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -150,6 +151,18 @@ public class PreviewQuizController implements Initializable {
         }
         labelGrade.setText("10.00");
 
+    }
+    List <Question> questionsDelete = new ArrayList<>();
+
+    public void setQuestionsDelete(List<Question> questionsDelete) {
+        this.questionsDelete = questionsDelete;
+    }
+
+    @FXML
+    private JFXButton saveButton;
+    @FXML
+    void save(ActionEvent event) {
+    QuestionMap.deleteQuestionsAndUpdateDB(questionsDelete);
     }
 
 }

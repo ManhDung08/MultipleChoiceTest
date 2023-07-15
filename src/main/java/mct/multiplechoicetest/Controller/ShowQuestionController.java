@@ -7,12 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import mct.multiplechoicetest.Model.Question;
@@ -79,18 +81,19 @@ public class ShowQuestionController implements Initializable {
     @FXML
     void selectItem(MouseEvent event) {
         TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
-        System.out.println(xuLiChuoi(treeView.getSelectionModel().getSelectedItem().getValue()));
 
+        popupTreeViewBtn.setText(treeView.getSelectionModel().getSelectedItem().getValue());
+        List<Question> questions = Question.selectAllByQuizId(Quiz.getQuizIdFromName(xuLiChuoi(popupTreeViewBtn.getText())));
+        showQuestionList(questions);
     }
-    String xuLiChuoi(String inputString){
-        if(inputString.charAt(inputString.length() - 1) == ')'){
+
+    String xuLiChuoi(String inputString) {
+        if (inputString.charAt(inputString.length() - 1) == ')') {
             int index = inputString.indexOf(" (");
-            inputString= inputString.substring(0,index);
-        }else return inputString;
-        return  inputString;
-        }
-
-
+            inputString = inputString.substring(0, index);
+        } else return inputString;
+        return inputString;
+    }
 
 
     @Override
@@ -98,6 +101,8 @@ public class ShowQuestionController implements Initializable {
         TreeItem<String> rootItem = new TreeItem<>("Course: IT");
         treeView.setRoot(rootItem);
         addChildItem(rootItem, 1);
+        List<Question> questions = Question.selectAllByQuizId(Quiz.getQuizIdFromName(xuLiChuoi(popupTreeViewBtn.getText())));
+        showQuestionList(questions);
 
     }
 
@@ -125,70 +130,80 @@ public class ShowQuestionController implements Initializable {
     @FXML
     private CheckBox showQuestionCheckBox;
 
-
+    private List<Question> addChildQuestion(List<Question> questions, int parenId) {
+        List<Quiz> quizzes = Quiz.getAllQuizzesFromDatabase();
+        for (Quiz quiz : quizzes) {
+            if (quiz.getParent_id() == parenId) {
+                List<Question> questionList = Question.selectAllByQuizId(quiz.getQuiz_id());
+                questions.addAll(questionList);
+                addChildQuestion(questions, quiz.getQuiz_id());
+            }
+        }
+        return questions;
+    }
     @FXML
-    private ListView<?> listView;
-
-    public void showQuestion(ActionEvent actionEvent) {
-        if (showQuestionCheckBox.isSelected()) {
-            listView.setVisible(true);
-            showQuestionsInListView((ListView<String>) listView);
-        } else {
-            listView.setVisible(false);
+    private VBox vBoxD;
+    private void showQuestionList(List<Question> q) {
+        vBoxD.getChildren().clear(); // Clear existing questions
+        for (Question question : q) {
+            FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("QuestionCard1.fxml"));
+            try {
+                Node node = fxmlLoader.load();
+                vBoxD.getChildren().add(node);
+                QuestionCard1Controller questionCard1Controller = fxmlLoader.getController();
+                questionCard1Controller.setQuestionInFor(question.getQuestionText()+" "+question.getOption1Text()+
+                                                        " "+ question.getOption2Text()+" "+question.getOption3Text()+
+                        " "+ question.getOption4Text()+" "+question.getOption5Text());
+                questionCard1Controller.setQuestion(question);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    private void showQuestionsInListView(ListView<String> listView) {
-      ArrayList<Question> questions = Question.selectAllByQuizId(Quiz.getQuizIdFromName(xuLiChuoi(treeView.getSelectionModel().getSelectedItem().getValue())));
+    @FXML
+    void showQuestion(ActionEvent event) {
+        vBoxD.getChildren().clear();
+        List<Question> questions = Question.selectAllByQuizId(Quiz.getQuizIdFromName(xuLiChuoi(popupTreeViewBtn.getText())));
+        if (showQuestionCheckBox.isSelected()) {
+            addChildQuestion(questions, Quiz.getQuizIdFromName(xuLiChuoi(popupTreeViewBtn.getText())));
+            for (Question question : questions) {
+                FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("QuestionCard1.fxml"));
+                try {
+                    Node node = fxmlLoader.load();
+                    vBoxD.getChildren().add(node);
+                    QuestionCard1Controller questionCard1Controller = fxmlLoader.getController();
+                    questionCard1Controller.setQuestionInFor(question.getQuestionText()+" "+question.getOption1Text()+
+                            " "+ question.getOption2Text()+" "+question.getOption3Text()+
+                            " "+ question.getOption4Text()+" "+question.getOption5Text());
+                    questionCard1Controller.setQuestion(question);
 
-      ArrayList<String> questionList = new ArrayList<>();
-      for (Question question : questions){
-          questionList.add("     "+ question.getQuestionText()+" " +question.getQuestionImg()+question.getQuestionMark()+" "+question.getOption1Text()+question.getOption1Img()+question.getOption1Mark()+
-                  " "+question.getOption2Text()+" "+question.getOption2Img()+" "+question.getOption2Mark()+
-                  " "+question.getOption3Text()+" "+question.getOption3Img()+" "+question.getOption3Mark()+
-                  " "+question.getOption4Text()+" "+question.getOption4Img()+" "+question.getOption4Mark()+
-                  " "+question.getOption5Text()+" "+question.getOption5Img()+" "+question.getOption5Mark()
-          );
-      }
-        ObservableList<String> items = FXCollections.observableArrayList(questionList);
-        listView.setItems(items);
-        listView.setCellFactory(param -> new ListCell<String>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty || item == null) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    // Tạo layout tùy chỉnh cho từng item
-                    HBox hbox = new HBox();
-                    Label nameLabel = new Label(item);
-                    nameLabel.setPrefWidth(500);
-                    CheckBox checkBox = new CheckBox();
-                    checkBox.setText(null);
-                    FontAwesomeIconView iconView = new FontAwesomeIconView();
-
-                    iconView.setGlyphName("SORT_DOWN");
-                    iconView.setSize("12px");
-                    iconView.setFill(Paint.valueOf("#0000FF"));
-
-                    JFXButton editButton = new JFXButton("Edit");
-                    editButton.setStyle("-fx-text-fill: blue;");
-                    // Thiết lập sự kiện cho nút Edit
-                    editButton.setOnAction(event -> {
-                        // Xử lý sự kiện khi nút Edit được nhấn
-                        System.out.println("Edit button clicked for item: " + item);
-                    });
-                    hbox.getChildren().addAll(checkBox,nameLabel,new Region(), editButton,iconView);
-                    HBox.setHgrow(new Region(), Priority.ALWAYS);
-                    setGraphic(hbox);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
-        });
+
+
+        } else {
+            for (Question question : questions) {
+                FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("QuestionCard1.fxml"));
+                try {
+                    Node node = fxmlLoader.load();
+                    vBoxD.getChildren().add(node);
+                    QuestionCard1Controller questionCard1Controller = fxmlLoader.getController();
+                    questionCard1Controller.setQuestionInFor(question.getQuestionText()+" "+question.getOption1Text()+
+                            " "+ question.getOption2Text()+" "+question.getOption3Text()+
+                            " "+ question.getOption4Text()+" "+question.getOption5Text());
+                    questionCard1Controller.setQuestion(question);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        }
+
+
     }
-
-
 }
 
 

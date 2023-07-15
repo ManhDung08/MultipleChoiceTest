@@ -25,11 +25,11 @@ public class Question {
         this.questionImg = questionImg;
     }
 
-    public int getQuestionMark() {
+    public float getQuestionMark() {
         return questionMark;
     }
 
-    public void setQuestionMark(int questionMark) {
+    public void setQuestionMark(float questionMark) {
         this.questionMark = questionMark;
     }
 
@@ -49,11 +49,11 @@ public class Question {
         this.option1Img = option1Img;
     }
 
-    public int getOption1Mark() {
+    public float getOption1Mark() {
         return option1Mark;
     }
 
-    public void setOption1Mark(int option1Mark) {
+    public void setOption1Mark(float option1Mark) {
         this.option1Mark = option1Mark;
     }
 
@@ -73,11 +73,11 @@ public class Question {
         this.option2Img = option2Img;
     }
 
-    public int getOption2Mark() {
+    public float getOption2Mark() {
         return option2Mark;
     }
 
-    public void setOption2Mark(int option2Mark) {
+    public void setOption2Mark(float option2Mark) {
         this.option2Mark = option2Mark;
     }
 
@@ -97,11 +97,11 @@ public class Question {
         this.option3Img = option3Img;
     }
 
-    public int getOption3Mark() {
+    public float getOption3Mark() {
         return option3Mark;
     }
 
-    public void setOption3Mark(int option3Mark) {
+    public void setOption3Mark(float option3Mark) {
         this.option3Mark = option3Mark;
     }
 
@@ -121,11 +121,11 @@ public class Question {
         this.option4Img = option4Img;
     }
 
-    public int getOption4Mark() {
+    public float getOption4Mark() {
         return option4Mark;
     }
 
-    public void setOption4Mark(int option4Mark) {
+    public void setOption4Mark(float option4Mark) {
         this.option4Mark = option4Mark;
     }
 
@@ -145,11 +145,11 @@ public class Question {
         this.option5Img = option5Img;
     }
 
-    public int getOption5Mark() {
+    public float getOption5Mark() {
         return option5Mark;
     }
 
-    public void setOption5Mark(int option5Mark) {
+    public void setOption5Mark(float option5Mark) {
         this.option5Mark = option5Mark;
     }
 
@@ -164,22 +164,22 @@ public class Question {
     private int questionId;
     private String questionText;
     private String questionImg;
-    private int questionMark;
+    private float questionMark;
     private String option1Text;
     private String option1Img;
-    private int option1Mark;
+    private float option1Mark;
     private String option2Text;
     private String option2Img;
-    private int option2Mark;
+    private float option2Mark;
     private String option3Text;
     private String option3Img;
-    private int option3Mark;
+    private float option3Mark;
     private String option4Text;
     private String option4Img;
-    private int option4Mark;
+    private float option4Mark;
     private String option5Text;
     private String option5Img;
-    private int option5Mark;
+    private float option5Mark;
     private String answer;
 
     public Question() {
@@ -190,7 +190,7 @@ public class Question {
         this.questionId = questionId;
     }
 
-    public Question(Quiz quiz, int questionId, String questionText, String questionImg, int questionMark, String option1Text, String option1Img, int option1Mark, String option2Text, String option2Img, int option2Mark, String option3Text, String option3Img, int option3Mark, String option4Text, String option4Img, int option4Mark, String option5Text, String option5Img, int option5Mark, String answer) {
+    public Question(Quiz quiz, int questionId, String questionText, String questionImg, float questionMark, String option1Text, String option1Img, float option1Mark, String option2Text, String option2Img, float option2Mark, String option3Text, String option3Img, float option3Mark, String option4Text, String option4Img, float option4Mark, String option5Text, String option5Img, float option5Mark, String answer) {
         this.quiz = quiz;
         this.questionId = questionId;
         this.questionText = questionText;
@@ -246,22 +246,22 @@ public class Question {
                             "  question_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                             "  question_text VARCHAR," +
                             "  question_img VARCHAR," +
-                            "  question_mark INTEGER," +
+                            "  question_mark FLOAT," +
                             "  option1_text VARCHAR," +
                             "  option1_img VARCHAR," +
-                            "  option1_mark INTEGER," +
+                            "  option1_mark FLOAT," +
                             "  option2_text VARCHAR," +
                             "  option2_img VARCHAR," +
-                            "  option2_mark INTEGER," +
+                            "  option2_mark FLOAT," +
                             "  option3_text VARCHAR," +
                             "  option3_img VARCHAR," +
-                            "  option3_mark INTEGER," +
+                            "  option3_mark FLOAT," +
                             "  option4_text VARCHAR," +
                             "  option4_img VARCHAR," +
-                            "  option4_mark INTEGER," +
+                            "  option4_mark FLOAT," +
                             "  option5_text VARCHAR," +
                             "  option5_img VARCHAR," +
-                            "  option5_mark INTEGER," +
+                            "  option5_mark FLOAT," +
                             "  answer VARCHAR," +
                             "  quiz_id INTEGER," +
                             "  FOREIGN KEY (quiz_id) REFERENCES quizzes (Quizid)" +
@@ -335,22 +335,22 @@ public class Question {
                     question.setQuestionId(resultSet.getInt("question_id"));
                     question.setQuestionText(resultSet.getString("question_text"));
                     question.setQuestionImg(resultSet.getString("question_img"));
-                    question.setQuestionMark(resultSet.getInt("question_mark"));
+                    question.setQuestionMark(resultSet.getFloat("question_mark"));
                     question.setOption1Text(resultSet.getString("option1_text"));
                     question.setOption1Img(resultSet.getString("option1_img"));
-                    question.setOption1Mark(resultSet.getInt("option1_mark"));
+                    question.setOption1Mark(resultSet.getFloat("option1_mark"));
                     question.setOption2Text(resultSet.getString("option2_text"));
                     question.setOption2Img(resultSet.getString("option2_img"));
-                    question.setOption2Mark(resultSet.getInt("option2_mark"));
+                    question.setOption2Mark(resultSet.getFloat("option2_mark"));
                     question.setOption3Text(resultSet.getString("option3_text"));
                     question.setOption3Img(resultSet.getString("option3_img"));
-                    question.setOption3Mark(resultSet.getInt("option3_mark"));
+                    question.setOption3Mark(resultSet.getFloat("option3_mark"));
                     question.setOption4Text(resultSet.getString("option4_text"));
                     question.setOption4Img(resultSet.getString("option4_img"));
-                    question.setOption4Mark(resultSet.getInt("option4_mark"));
+                    question.setOption4Mark(resultSet.getFloat("option4_mark"));
                     question.setOption5Text(resultSet.getString("option5_text"));
                     question.setOption5Img(resultSet.getString("option5_img"));
-                    question.setOption5Mark(resultSet.getInt("option5_mark"));
+                    question.setOption5Mark(resultSet.getFloat("option5_mark"));
                     question.setAnswer(resultSet.getString("answer"));
                     // Set the Quiz object for the question
 
