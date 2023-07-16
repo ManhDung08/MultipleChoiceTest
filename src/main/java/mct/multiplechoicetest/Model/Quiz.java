@@ -20,9 +20,6 @@ public class Quiz {
     }
 
 
-
-
-
     public int getQuiz_id() {
         return quiz_id;
     }
@@ -228,7 +225,6 @@ public class Quiz {
     }
 
 
-
     // chú ý phương thức này trong DAO interface
     public void saveToDatabaseWithNoID() {
         int parentId = 0;
@@ -269,6 +265,7 @@ public class Quiz {
             e.printStackTrace();
         }
     }
+
     public static Quiz getQuizFromDatabase(int quizId) {
         Quiz quiz = null;
 
@@ -311,5 +308,45 @@ public class Quiz {
         return quiz;
     }
 
+    public static Quiz getLatestAddedQuizFromDatabase() {
+        Quiz quiz = null;
 
+        try {
+            // Register the JDBC driver
+            Class.forName("org.sqlite.JDBC");
+
+            // Define the connection URL for the SQLite database
+            String url = "jdbc:sqlite:D:\\hoclaptrinhjava\\MultipleChoiceTest\\csdl.db";
+
+            // Open a connection to the database
+            Connection connection = DriverManager.getConnection(url);
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT * FROM quizzes ORDER BY Quizid DESC LIMIT 1");
+
+            // Execute the query and retrieve the result set
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if the result set has a row
+            if (resultSet.next()) {
+                // Retrieve the quiz ID, name, and parent ID from the result set
+                int quizId = resultSet.getInt("Quizid");
+                String name = resultSet.getString("name");
+                int parentId = resultSet.getInt("Parentid");
+
+                // Create a Quiz object with the retrieved values
+                quiz = new Quiz(quizId, name, parentId);
+            }
+
+            // Close the result set, statement, and connection
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quiz;
+
+
+    }
 }

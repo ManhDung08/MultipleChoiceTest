@@ -204,6 +204,18 @@ public class ShowQuestionController implements Initializable {
 
 
     }
+
+    @FXML
+    private JFXButton goImportBtn;
+
+    @FXML
+    void goImport(ActionEvent event) throws IOException {
+        Stage stage = (Stage) goImportBtn.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApp.class.getResource("Import.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("app");
+        stage.setScene(scene);
+    }
 }
 
 

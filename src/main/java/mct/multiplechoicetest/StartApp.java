@@ -19,12 +19,13 @@ public class StartApp extends Application {
         stage.setTitle("BTL lập trình HDT");
         stage.setScene(scene);
         stage.show();
-
+    // Đường dẫn chính xác  D:\hoclaptrinhjava\MultipleChoiceTest1\csdl.db
+    // Đường dẫn hợp lệ  :  D:\\hoclaptrinhjava\\MultipleChoiceTest1\\csdl.db
+        // hoặc             D:/hoclaptrinhjava/MultipleChoiceTest1/csdl.db
 
     }
     public static void main(String[] args) {
         launch();
     }
-    // còn xử lí nốt điểm cho từng câu hỏi
-    //////
+
 }

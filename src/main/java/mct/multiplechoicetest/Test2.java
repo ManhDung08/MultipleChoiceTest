@@ -12,9 +12,6 @@ import java.util.List;
 public class Test2 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String a =null;
-    if(a == null){
-        System.out.println(1);
-    }
+    System.out.println("D:\\hoclaptrinhjava\\MultipleChoiceTest1\\csdl.db".replace("\\", "\\\\"));
     }
 }

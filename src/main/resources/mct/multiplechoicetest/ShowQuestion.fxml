@@ -120,7 +120,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                      <graphic>
-                        <JFXButton text="Import" />
+                        <JFXButton fx:id="goImportBtn" onAction="#goImport" text="Import" />
                      </graphic>
                   </Tab>
                   <Tab>

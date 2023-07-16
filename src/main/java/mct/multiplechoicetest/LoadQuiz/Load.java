@@ -1,5 +1,7 @@
 package mct.multiplechoicetest.LoadQuiz;
 
+import mct.multiplechoicetest.Model.Quiz;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.sql.SQLException;
 public class Load {
 
     public static void main(String[] args) {
-        String filename = "D:\\hoclaptrinhjava\\MultipleChoiceTest\\1. Đối với sản phẩm bảo hiểm liên k.txt"; // Replace with the actual file path
+        String filename = "D:\\Pictures\\TestOOP.txt"; // Replace with the actual file path
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -82,8 +84,8 @@ public class Load {
         // Open a connection to the database
         Connection connection = DriverManager.getConnection(url);
         PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO questions (question_text, option1_text, option2_text, option3_text, option4_text,option5_text, answer) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?)");
+                "INSERT INTO questions (question_text, option1_text, option2_text, option3_text, option4_text,option5_text, answer,quiz_id) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 
 
@@ -99,6 +101,7 @@ public class Load {
             statement.setString(5, optionD);
             statement.setString(6, optionE);
             statement.setString(7, correctOption);
+            statement.setInt(8, Quiz.getLatestAddedQuizFromDatabase().getQuiz_id());
 
             statement.executeUpdate();
 

@@ -340,8 +340,11 @@ public class AddQuestionController implements Initializable {
         if(newTextQuestion.getText().length()!=0 && newTextAreaQuestion.getText().length() != 0 ) {
             QuestionDAO questionDAO = new QuestionDAO();
             questionDAO.save(question);
-            QuestionDAO questionDAO1= new QuestionDAO();
-            questionDAO1.delete(deleteQuestions);
+            if(deleteQuestions != null){
+                QuestionDAO questionDAO1= new QuestionDAO();
+                questionDAO1.delete(deleteQuestions);
+            }
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("thong bao");
             alert.setContentText("success");
@@ -459,8 +462,10 @@ public class AddQuestionController implements Initializable {
         if(newTextQuestion.getText().length()!=0 && newTextAreaQuestion.getText().length() != 0 ) {
             QuestionDAO questionDAO = new QuestionDAO();
             questionDAO.save(question);
-            QuestionDAO questionDAO1= new QuestionDAO();
-            questionDAO1.delete(deleteQuestions);
+            if(deleteQuestions != null){
+                QuestionDAO questionDAO1= new QuestionDAO();
+                questionDAO1.delete(deleteQuestions);
+            }
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("thong bao");

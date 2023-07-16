@@ -82,6 +82,7 @@ public class TextFile {
                 System.out.println("Success: " + questionCount + " question(s) found");
             } else {
                 System.out.println("Error at line " + lineCount);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
